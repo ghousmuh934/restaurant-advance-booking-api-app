@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="WebApiDemoModelStoreContainer" CdmEntityContainer="WebApiDemoEntities2">
+    <EntitySetMapping Name="AddChefs">
+      <EntityTypeMapping TypeName="WebApiDemoModel.AddChef">
+        <MappingFragment StoreEntitySet="AddChef">
+          <ScalarProperty Name="picture" ColumnName="picture" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="contactno" ColumnName="contactno" />
+          <ScalarProperty Name="speciality" ColumnName="speciality" />
+          <ScalarProperty Name="specific" ColumnName="specific" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="rsid" ColumnName="rsid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AddMenus">
+      <EntityTypeMapping TypeName="WebApiDemoModel.AddMenu">
+        <MappingFragment StoreEntitySet="AddMenu">
+          <ScalarProperty Name="rating" ColumnName="rating" />
+          <ScalarProperty Name="mirlevel" ColumnName="mirlevel" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="FoodName" ColumnName="FoodName" />
+          <ScalarProperty Name="FoodType" ColumnName="FoodType" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="TimePrepation" ColumnName="TimePrepation" />
+          <ScalarProperty Name="pic" ColumnName="pic" />
+          <ScalarProperty Name="restid" ColumnName="restid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AddWaiters">
+      <EntityTypeMapping TypeName="WebApiDemoModel.AddWaiter">
+        <MappingFragment StoreEntitySet="AddWaiter">
+          <ScalarProperty Name="wrstid" ColumnName="wrstid" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="contactno" ColumnName="contactno" />
+          <ScalarProperty Name="pic" ColumnName="pic" />
+          <ScalarProperty Name="uid" ColumnName="uid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Restaurants">
+      <EntityTypeMapping TypeName="WebApiDemoModel.Restaurant">
+        <MappingFragment StoreEntitySet="Restaurant">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="RestName" ColumnName="RestName" />
+          <ScalarProperty Name="RestLocation" ColumnName="RestLocation" />
+          <ScalarProperty Name="RestPhNum" ColumnName="RestPhNum" />
+          <ScalarProperty Name="RestStars" ColumnName="RestStars" />
+          <ScalarProperty Name="RestPic" ColumnName="RestPic" />
+          <ScalarProperty Name="rid" ColumnName="rid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="WebApiDemoModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="LoginStatus" ColumnName="LoginStatus" />
+          <ScalarProperty Name="rtid" ColumnName="rtid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Order_Detail">
+      <EntityTypeMapping TypeName="WebApiDemoModel.Order_Detail">
+        <MappingFragment StoreEntitySet="Order_Detail">
+          <ScalarProperty Name="tbno" ColumnName="tbno" />
+          <ScalarProperty Name="pickeddate" ColumnName="pickeddate" />
+          <ScalarProperty Name="pickedtime" ColumnName="pickedtime" />
+          <ScalarProperty Name="UnitTag" ColumnName="UnitTag" />
+          <ScalarProperty Name="FQuant" ColumnName="FQuant" />
+          <ScalarProperty Name="retid" ColumnName="retid" />
+          <ScalarProperty Name="usrid" ColumnName="usrid" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="FImage" ColumnName="FImage" />
+          <ScalarProperty Name="TimeDate" ColumnName="TimeDate" />
+          <ScalarProperty Name="FPrice" ColumnName="FPrice" />
+          <ScalarProperty Name="FTimePrep" ColumnName="FTimePrep" />
+          <ScalarProperty Name="FCat" ColumnName="FCat" />
+          <ScalarProperty Name="Ftype" ColumnName="Ftype" />
+          <ScalarProperty Name="FName" ColumnName="FName" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Variations">
+      <EntityTypeMapping TypeName="WebApiDemoModel.Variation">
+        <MappingFragment StoreEntitySet="Variation">
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="fid" ColumnName="fid" />
+          <ScalarProperty Name="varName" ColumnName="varName" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="table_layout">
+      <EntityTypeMapping TypeName="WebApiDemoModel.table_layout">
+        <MappingFragment StoreEntitySet="table_layout">
+          <ScalarProperty Name="table1" ColumnName="table1" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SetTables">
+      <EntityTypeMapping TypeName="WebApiDemoModel.SetTable">
+        <MappingFragment StoreEntitySet="SetTable">
+          <ScalarProperty Name="capacity" ColumnName="capacity" />
+          <ScalarProperty Name="tblrestid" ColumnName="tblrestid" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="table_image" ColumnName="table_image" />
+          <ScalarProperty Name="table_no" ColumnName="table_no" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

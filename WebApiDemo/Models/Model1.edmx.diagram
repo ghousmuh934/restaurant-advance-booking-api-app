@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2e38de80c84b46999b4523d7b982c799" Name="Diagram1" ZoomLevel="63">
+        <EntityTypeShape EntityType="WebApiDemoModel.AddChef" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebApiDemoModel.AddMenu" Width="1.5" PointX="5.25" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebApiDemoModel.AddWaiter" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebApiDemoModel.Restaurant" Width="1.5" PointX="2.875" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebApiDemoModel.User" Width="1.5" PointX="0.625" PointY="3.125" IsExpanded="true" />
+        <AssociationConnector Association="WebApiDemoModel.FK__AddMenu__restid__1273C1CD" ManuallyRouted="false" />
+        <AssociationConnector Association="WebApiDemoModel.FK__AddWaiter__uid__0BC6C43E" ManuallyRouted="false" ></AssociationConnector>
+        <AssociationConnector Association="WebApiDemoModel.FK__Restaurant__rid__117F9D94" ManuallyRouted="false" />
+        <AssociationConnector Association="WebApiDemoModel.FK__AddChef__rsid__30F848ED" />
+        <AssociationConnector Association="WebApiDemoModel.FK__AddChef__userid__300424B4" />
+        <AssociationConnector Association="WebApiDemoModel.FK__User__rtid__31EC6D26" />
+        <EntityTypeShape EntityType="WebApiDemoModel.Order_Detail" Width="1.5" PointX="8.25" PointY="5" />
+        <AssociationConnector Association="WebApiDemoModel.FK__Order_Det__retid__44FF419A" />
+        <AssociationConnector Association="WebApiDemoModel.FK__Order_Det__usrid__440B1D61" />
+        <AssociationConnector Association="WebApiDemoModel.FK__AddWaiter__wrsti__47DBAE45" />
+        <EntityTypeShape EntityType="WebApiDemoModel.Variation" Width="1.5" PointX="7.5" PointY="10.375" />
+        <AssociationConnector Association="WebApiDemoModel.FK__Variation__fid__4E88ABD4" />
+        <EntityTypeShape EntityType="WebApiDemoModel.table_layout" Width="1.5" PointX="0.75" PointY="9.75" />
+        <EntityTypeShape EntityType="WebApiDemoModel.SetTable" Width="1.5" PointX="5.125" PointY="8.375" />
+        <AssociationConnector Association="WebApiDemoModel.FK__SetTable__tblres__5BE2A6F2" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,757 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="WebApiDemoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AddChef">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="contactno" Type="nvarchar" MaxLength="50" />
+          <Property Name="speciality" Type="nvarchar" MaxLength="50" />
+          <Property Name="specific" Type="nvarchar" MaxLength="50" />
+          <Property Name="picture" Type="nvarchar(max)" />
+          <Property Name="userid" Type="int" />
+          <Property Name="rsid" Type="int" />
+        </EntityType>
+        <EntityType Name="AddMenu">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FoodName" Type="nvarchar" MaxLength="50" />
+          <Property Name="FoodType" Type="nvarchar" MaxLength="50" />
+          <Property Name="Category" Type="nvarchar" MaxLength="50" />
+          <Property Name="Price" Type="int" />
+          <Property Name="mirlevel" Type="int" />
+          <Property Name="TimePrepation" Type="nvarchar" MaxLength="50" />
+          <Property Name="pic" Type="nvarchar(max)" />
+          <Property Name="restid" Type="int" />
+          <Property Name="rating" Type="float" />
+        </EntityType>
+        <EntityType Name="AddWaiter">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="contactno" Type="nvarchar" MaxLength="50" />
+          <Property Name="pic" Type="nvarchar(max)" />
+          <Property Name="uid" Type="int" />
+          <Property Name="wrstid" Type="int" />
+        </EntityType>
+        <EntityType Name="Order_Detail">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Ftype" Type="nvarchar" MaxLength="50" />
+          <Property Name="FCat" Type="nvarchar" MaxLength="50" />
+          <Property Name="FTimePrep" Type="nvarchar" MaxLength="50" />
+          <Property Name="FQuant" Type="int" />
+          <Property Name="UnitTag" Type="nvarchar" MaxLength="50" />
+          <Property Name="FPrice" Type="float" />
+          <Property Name="TimeDate" Type="nvarchar" MaxLength="50" />
+          <Property Name="FImage" Type="nvarchar(max)" />
+          <Property Name="Status" Type="int" />
+          <Property Name="usrid" Type="int" />
+          <Property Name="retid" Type="int" />
+          <Property Name="pickedtime" Type="nvarchar" MaxLength="100" />
+          <Property Name="pickeddate" Type="nvarchar" MaxLength="100" />
+          <Property Name="tbno" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Restaurant">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RestName" Type="nvarchar" MaxLength="50" />
+          <Property Name="RestLocation" Type="nvarchar" MaxLength="50" />
+          <Property Name="RestPhNum" Type="nvarchar" MaxLength="50" />
+          <Property Name="RestStars" Type="nvarchar" MaxLength="50" />
+          <Property Name="RestPic" Type="nvarchar(max)" />
+          <Property Name="rid" Type="int" />
+        </EntityType>
+        <EntityType Name="SetTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="table_no" Type="nvarchar" MaxLength="50" />
+          <Property Name="table_image" Type="nvarchar(max)" />
+          <Property Name="status" Type="int" />
+          <Property Name="capacity" Type="nvarchar" MaxLength="50" />
+          <Property Name="tblrestid" Type="int" />
+        </EntityType>
+        <EntityType Name="table_layout">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="table1" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="username" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="LoginStatus" Type="nvarchar" MaxLength="50" />
+          <Property Name="rtid" Type="int" />
+        </EntityType>
+        <EntityType Name="Variation">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="varName" Type="nvarchar" MaxLength="50" />
+          <Property Name="price" Type="int" />
+          <Property Name="fid" Type="int" />
+        </EntityType>
+        <Association Name="FK__AddChef__rsid__30F848ED">
+          <End Role="Restaurant" Type="Self.Restaurant" Multiplicity="0..1" />
+          <End Role="AddChef" Type="Self.AddChef" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restaurant">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="AddChef">
+              <PropertyRef Name="rsid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AddChef__userid__300424B4">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="AddChef" Type="Self.AddChef" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="AddChef">
+              <PropertyRef Name="userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AddMenu__restid__1273C1CD">
+          <End Role="Restaurant" Type="Self.Restaurant" Multiplicity="0..1" />
+          <End Role="AddMenu" Type="Self.AddMenu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restaurant">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="AddMenu">
+              <PropertyRef Name="restid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AddWaiter__uid__0BC6C43E">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="AddWaiter" Type="Self.AddWaiter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="AddWaiter">
+              <PropertyRef Name="uid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AddWaiter__wrsti__47DBAE45">
+          <End Role="Restaurant" Type="Self.Restaurant" Multiplicity="0..1" />
+          <End Role="AddWaiter" Type="Self.AddWaiter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restaurant">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="AddWaiter">
+              <PropertyRef Name="wrstid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Order_Det__retid__44FF419A">
+          <End Role="Restaurant" Type="Self.Restaurant" Multiplicity="0..1" />
+          <End Role="Order_Detail" Type="Self.Order_Detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restaurant">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Order_Detail">
+              <PropertyRef Name="retid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Order_Det__usrid__440B1D61">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Order_Detail" Type="Self.Order_Detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Order_Detail">
+              <PropertyRef Name="usrid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Restaurant__rid__117F9D94">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Restaurant" Type="Self.Restaurant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Restaurant">
+              <PropertyRef Name="rid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__User__rtid__31EC6D26">
+          <End Role="Restaurant" Type="Self.Restaurant" Multiplicity="0..1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restaurant">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="rtid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Variation__fid__4E88ABD4">
+          <End Role="AddMenu" Type="Self.AddMenu" Multiplicity="0..1" />
+          <End Role="Variation" Type="Self.Variation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AddMenu">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Variation">
+              <PropertyRef Name="fid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="WebApiDemoModelStoreContainer">
+          <EntitySet Name="AddChef" EntityType="Self.AddChef" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AddMenu" EntityType="Self.AddMenu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AddWaiter" EntityType="Self.AddWaiter" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Order_Detail" EntityType="Self.Order_Detail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Restaurant" EntityType="Self.Restaurant" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SetTable" EntityType="Self.SetTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="table_layout" EntityType="Self.table_layout" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Variation" EntityType="Self.Variation" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__AddChef__rsid__30F848ED" Association="Self.FK__AddChef__rsid__30F848ED">
+            <End Role="Restaurant" EntitySet="Restaurant" />
+            <End Role="AddChef" EntitySet="AddChef" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AddChef__userid__300424B4" Association="Self.FK__AddChef__userid__300424B4">
+            <End Role="User" EntitySet="User" />
+            <End Role="AddChef" EntitySet="AddChef" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AddMenu__restid__1273C1CD" Association="Self.FK__AddMenu__restid__1273C1CD">
+            <End Role="Restaurant" EntitySet="Restaurant" />
+            <End Role="AddMenu" EntitySet="AddMenu" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AddWaiter__uid__0BC6C43E" Association="Self.FK__AddWaiter__uid__0BC6C43E">
+            <End Role="User" EntitySet="User" />
+            <End Role="AddWaiter" EntitySet="AddWaiter" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AddWaiter__wrsti__47DBAE45" Association="Self.FK__AddWaiter__wrsti__47DBAE45">
+            <End Role="Restaurant" EntitySet="Restaurant" />
+            <End Role="AddWaiter" EntitySet="AddWaiter" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Order_Det__retid__44FF419A" Association="Self.FK__Order_Det__retid__44FF419A">
+            <End Role="Restaurant" EntitySet="Restaurant" />
+            <End Role="Order_Detail" EntitySet="Order_Detail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Order_Det__usrid__440B1D61" Association="Self.FK__Order_Det__usrid__440B1D61">
+            <End Role="User" EntitySet="User" />
+            <End Role="Order_Detail" EntitySet="Order_Detail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Restaurant__rid__117F9D94" Association="Self.FK__Restaurant__rid__117F9D94">
+            <End Role="User" EntitySet="User" />
+            <End Role="Restaurant" EntitySet="Restaurant" />
+          </AssociationSet>
+          <AssociationSet Name="FK__User__rtid__31EC6D26" Association="Self.FK__User__rtid__31EC6D26">
+            <End Role="Restaurant" EntitySet="Restaurant" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Variation__fid__4E88ABD4" Association="Self.FK__Variation__fid__4E88ABD4">
+            <End Role="AddMenu" EntitySet="AddMenu" />
+            <End Role="Variation" EntitySet="Variation" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="WebApiDemoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AddChef">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="contactno" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="speciality" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="specific" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="userid" Type="Int32" />
+          <Property Name="rsid" Type="Int32" />
+          <NavigationProperty Name="Restaurant" Relationship="WebApiDemoModel.FK__AddChef__rsid__30F848ED" FromRole="AddChef" ToRole="Restaurant" />
+          <NavigationProperty Name="User" Relationship="WebApiDemoModel.FK__AddChef__userid__300424B4" FromRole="AddChef" ToRole="User" />
+          <Property Name="picture" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="AddMenu">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FoodName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FoodType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Category" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="Int32" />
+          <Property Name="TimePrepation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="pic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="restid" Type="Int32" />
+          <NavigationProperty Name="Restaurant" Relationship="Self.FK__AddMenu__restid__1273C1CD" FromRole="AddMenu" ToRole="Restaurant" />
+          <NavigationProperty Name="Variations" Relationship="WebApiDemoModel.FK__Variation__fid__4E88ABD4" FromRole="AddMenu" ToRole="Variation" />
+          <Property Name="mirlevel" Type="Int32" />
+          <Property Name="rating" Type="Double" />
+        </EntityType>
+        <EntityType Name="AddWaiter">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="contactno" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="pic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="uid" Type="Int32" />
+          <NavigationProperty Name="User" Relationship="Self.FK__AddWaiter__uid__0BC6C43E" FromRole="AddWaiter" ToRole="User" />
+          <Property Name="wrstid" Type="Int32" />
+          <NavigationProperty Name="Restaurant" Relationship="WebApiDemoModel.FK__AddWaiter__wrsti__47DBAE45" FromRole="AddWaiter" ToRole="Restaurant" />
+        </EntityType>
+        <EntityType Name="Restaurant">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RestName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RestLocation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RestPhNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RestStars" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RestPic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="rid" Type="Int32" />
+          <NavigationProperty Name="AddMenus" Relationship="Self.FK__AddMenu__restid__1273C1CD" FromRole="Restaurant" ToRole="AddMenu" />
+          <NavigationProperty Name="User" Relationship="Self.FK__Restaurant__rid__117F9D94" FromRole="Restaurant" ToRole="User" />
+          <NavigationProperty Name="AddChefs" Relationship="WebApiDemoModel.FK__AddChef__rsid__30F848ED" FromRole="Restaurant" ToRole="AddChef" />
+          <NavigationProperty Name="Users" Relationship="WebApiDemoModel.FK__User__rtid__31EC6D26" FromRole="Restaurant" ToRole="User" />
+          <NavigationProperty Name="Order_Detail" Relationship="WebApiDemoModel.FK__Order_Det__retid__44FF419A" FromRole="Restaurant" ToRole="Order_Detail" />
+          <NavigationProperty Name="AddWaiters1" Relationship="WebApiDemoModel.FK__AddWaiter__wrsti__47DBAE45" FromRole="Restaurant" ToRole="AddWaiter" />
+          <NavigationProperty Name="SetTables" Relationship="WebApiDemoModel.FK__SetTable__tblres__5BE2A6F2" FromRole="Restaurant" ToRole="SetTable" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LoginStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="rtid" Type="Int32" />
+          <NavigationProperty Name="AddWaiters" Relationship="Self.FK__AddWaiter__uid__0BC6C43E" FromRole="User" ToRole="AddWaiter" />
+          <NavigationProperty Name="Restaurants" Relationship="Self.FK__Restaurant__rid__117F9D94" FromRole="User" ToRole="Restaurant" />
+          <NavigationProperty Name="AddChefs" Relationship="WebApiDemoModel.FK__AddChef__userid__300424B4" FromRole="User" ToRole="AddChef" />
+          <NavigationProperty Name="Restaurant" Relationship="WebApiDemoModel.FK__User__rtid__31EC6D26" FromRole="User" ToRole="Restaurant" />
+          <NavigationProperty Name="Order_Detail" Relationship="WebApiDemoModel.FK__Order_Det__usrid__440B1D61" FromRole="User" ToRole="Order_Detail" />
+        </EntityType>
+        <Association Name="FK__AddMenu__restid__1273C1CD">
+          <End Role="Restaurant" Type="Self.Restaurant" Multiplicity="0..1" />
+          <End Role="AddMenu" Type="Self.AddMenu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restaurant">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="AddMenu">
+              <PropertyRef Name="restid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AddWaiter__uid__0BC6C43E">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="AddWaiter" Type="Self.AddWaiter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="AddWaiter">
+              <PropertyRef Name="uid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Restaurant__rid__117F9D94">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Restaurant" Type="Self.Restaurant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Restaurant">
+              <PropertyRef Name="rid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="WebApiDemoEntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AddChefs" EntityType="Self.AddChef" />
+          <EntitySet Name="AddMenus" EntityType="Self.AddMenu" />
+          <EntitySet Name="AddWaiters" EntityType="Self.AddWaiter" />
+          <EntitySet Name="Restaurants" EntityType="Self.Restaurant" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <AssociationSet Name="FK__AddMenu__restid__1273C1CD" Association="Self.FK__AddMenu__restid__1273C1CD">
+            <End Role="Restaurant" EntitySet="Restaurants" />
+            <End Role="AddMenu" EntitySet="AddMenus" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AddWaiter__uid__0BC6C43E" Association="Self.FK__AddWaiter__uid__0BC6C43E">
+            <End Role="User" EntitySet="Users" />
+            <End Role="AddWaiter" EntitySet="AddWaiters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Restaurant__rid__117F9D94" Association="Self.FK__Restaurant__rid__117F9D94">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Restaurant" EntitySet="Restaurants" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AddChef__rsid__30F848ED" Association="WebApiDemoModel.FK__AddChef__rsid__30F848ED">
+            <End Role="Restaurant" EntitySet="Restaurants" />
+            <End Role="AddChef" EntitySet="AddChefs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AddChef__userid__300424B4" Association="WebApiDemoModel.FK__AddChef__userid__300424B4">
+            <End Role="User" EntitySet="Users" />
+            <End Role="AddChef" EntitySet="AddChefs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__User__rtid__31EC6D26" Association="WebApiDemoModel.FK__User__rtid__31EC6D26">
+            <End Role="Restaurant" EntitySet="Restaurants" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <EntitySet Name="Order_Detail" EntityType="WebApiDemoModel.Order_Detail" />
+          <AssociationSet Name="FK__Order_Det__retid__44FF419A" Association="WebApiDemoModel.FK__Order_Det__retid__44FF419A">
+            <End Role="Restaurant" EntitySet="Restaurants" />
+            <End Role="Order_Detail" EntitySet="Order_Detail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Order_Det__usrid__440B1D61" Association="WebApiDemoModel.FK__Order_Det__usrid__440B1D61">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Order_Detail" EntitySet="Order_Detail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AddWaiter__wrsti__47DBAE45" Association="WebApiDemoModel.FK__AddWaiter__wrsti__47DBAE45">
+            <End Role="Restaurant" EntitySet="Restaurants" />
+            <End Role="AddWaiter" EntitySet="AddWaiters" />
+          </AssociationSet>
+          <EntitySet Name="Variations" EntityType="WebApiDemoModel.Variation" />
+          <AssociationSet Name="FK__Variation__fid__4E88ABD4" Association="WebApiDemoModel.FK__Variation__fid__4E88ABD4">
+            <End Role="AddMenu" EntitySet="AddMenus" />
+            <End Role="Variation" EntitySet="Variations" />
+          </AssociationSet>
+          <EntitySet Name="table_layout" EntityType="WebApiDemoModel.table_layout" />
+          <EntitySet Name="SetTables" EntityType="WebApiDemoModel.SetTable" />
+          <AssociationSet Name="FK__SetTable__tblres__5BE2A6F2" Association="WebApiDemoModel.FK__SetTable__tblres__5BE2A6F2">
+            <End Role="Restaurant" EntitySet="Restaurants" />
+            <End Role="SetTable" EntitySet="SetTables" />
+          </AssociationSet>
+          </EntityContainer>
+        <Association Name="FK__AddChef__rsid__30F848ED">
+          <End Type="WebApiDemoModel.Restaurant" Role="Restaurant" Multiplicity="0..1" />
+          <End Type="WebApiDemoModel.AddChef" Role="AddChef" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restaurant">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="AddChef">
+              <PropertyRef Name="rsid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AddChef__userid__300424B4">
+          <End Type="WebApiDemoModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="WebApiDemoModel.AddChef" Role="AddChef" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="AddChef">
+              <PropertyRef Name="userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__User__rtid__31EC6D26">
+          <End Type="WebApiDemoModel.Restaurant" Role="Restaurant" Multiplicity="0..1" />
+          <End Type="WebApiDemoModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restaurant">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="rtid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Order_Detail">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Ftype" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FCat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FTimePrep" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FPrice" Type="Double" />
+          <Property Name="TimeDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="usrid" Type="Int32" />
+          <Property Name="retid" Type="Int32" />
+          <NavigationProperty Name="Restaurant" Relationship="WebApiDemoModel.FK__Order_Det__retid__44FF419A" FromRole="Order_Detail" ToRole="Restaurant" />
+          <NavigationProperty Name="User" Relationship="WebApiDemoModel.FK__Order_Det__usrid__440B1D61" FromRole="Order_Detail" ToRole="User" />
+          <Property Name="FQuant" Type="Int32" />
+          <Property Name="UnitTag" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="pickedtime" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="pickeddate" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="tbno" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK__Order_Det__retid__44FF419A">
+          <End Type="WebApiDemoModel.Restaurant" Role="Restaurant" Multiplicity="0..1" />
+          <End Type="WebApiDemoModel.Order_Detail" Role="Order_Detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restaurant">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Order_Detail">
+              <PropertyRef Name="retid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Order_Det__usrid__440B1D61">
+          <End Type="WebApiDemoModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="WebApiDemoModel.Order_Detail" Role="Order_Detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Order_Detail">
+              <PropertyRef Name="usrid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AddWaiter__wrsti__47DBAE45">
+          <End Type="WebApiDemoModel.Restaurant" Role="Restaurant" Multiplicity="0..1" />
+          <End Type="WebApiDemoModel.AddWaiter" Role="AddWaiter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restaurant">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="AddWaiter">
+              <PropertyRef Name="wrstid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Variation">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="varName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fid" Type="Int32" />
+          <NavigationProperty Name="AddMenu" Relationship="WebApiDemoModel.FK__Variation__fid__4E88ABD4" FromRole="Variation" ToRole="AddMenu" />
+          <Property Name="price" Type="Int32" />
+        </EntityType>
+        <Association Name="FK__Variation__fid__4E88ABD4">
+          <End Type="WebApiDemoModel.AddMenu" Role="AddMenu" Multiplicity="0..1" />
+          <End Type="WebApiDemoModel.Variation" Role="Variation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AddMenu">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Variation">
+              <PropertyRef Name="fid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="table_layout">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="table1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="SetTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="table_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="table_image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="status" Type="Int32" />
+          <Property Name="tblrestid" Type="Int32" />
+          <NavigationProperty Name="Restaurant" Relationship="WebApiDemoModel.FK__SetTable__tblres__5BE2A6F2" FromRole="SetTable" ToRole="Restaurant" />
+          <Property Name="capacity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK__SetTable__tblres__5BE2A6F2">
+          <End Type="WebApiDemoModel.Restaurant" Role="Restaurant" Multiplicity="0..1" />
+          <End Type="WebApiDemoModel.SetTable" Role="SetTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restaurant">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SetTable">
+              <PropertyRef Name="tblrestid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="WebApiDemoModelStoreContainer" CdmEntityContainer="WebApiDemoEntities2">
+          <EntitySetMapping Name="AddChefs">
+            <EntityTypeMapping TypeName="WebApiDemoModel.AddChef">
+              <MappingFragment StoreEntitySet="AddChef">
+                <ScalarProperty Name="picture" ColumnName="picture" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="contactno" ColumnName="contactno" />
+                <ScalarProperty Name="speciality" ColumnName="speciality" />
+                <ScalarProperty Name="specific" ColumnName="specific" />
+                <ScalarProperty Name="userid" ColumnName="userid" />
+                <ScalarProperty Name="rsid" ColumnName="rsid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AddMenus">
+            <EntityTypeMapping TypeName="WebApiDemoModel.AddMenu">
+              <MappingFragment StoreEntitySet="AddMenu">
+                <ScalarProperty Name="rating" ColumnName="rating" />
+                <ScalarProperty Name="mirlevel" ColumnName="mirlevel" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="FoodName" ColumnName="FoodName" />
+                <ScalarProperty Name="FoodType" ColumnName="FoodType" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="TimePrepation" ColumnName="TimePrepation" />
+                <ScalarProperty Name="pic" ColumnName="pic" />
+                <ScalarProperty Name="restid" ColumnName="restid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AddWaiters">
+            <EntityTypeMapping TypeName="WebApiDemoModel.AddWaiter">
+              <MappingFragment StoreEntitySet="AddWaiter">
+                <ScalarProperty Name="wrstid" ColumnName="wrstid" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="contactno" ColumnName="contactno" />
+                <ScalarProperty Name="pic" ColumnName="pic" />
+                <ScalarProperty Name="uid" ColumnName="uid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Restaurants">
+            <EntityTypeMapping TypeName="WebApiDemoModel.Restaurant">
+              <MappingFragment StoreEntitySet="Restaurant">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="RestName" ColumnName="RestName" />
+                <ScalarProperty Name="RestLocation" ColumnName="RestLocation" />
+                <ScalarProperty Name="RestPhNum" ColumnName="RestPhNum" />
+                <ScalarProperty Name="RestStars" ColumnName="RestStars" />
+                <ScalarProperty Name="RestPic" ColumnName="RestPic" />
+                <ScalarProperty Name="rid" ColumnName="rid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="WebApiDemoModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="LoginStatus" ColumnName="LoginStatus" />
+                <ScalarProperty Name="rtid" ColumnName="rtid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Order_Detail">
+            <EntityTypeMapping TypeName="WebApiDemoModel.Order_Detail">
+              <MappingFragment StoreEntitySet="Order_Detail">
+                <ScalarProperty Name="tbno" ColumnName="tbno" />
+                <ScalarProperty Name="pickeddate" ColumnName="pickeddate" />
+                <ScalarProperty Name="pickedtime" ColumnName="pickedtime" />
+                <ScalarProperty Name="UnitTag" ColumnName="UnitTag" />
+                <ScalarProperty Name="FQuant" ColumnName="FQuant" />
+                <ScalarProperty Name="retid" ColumnName="retid" />
+                <ScalarProperty Name="usrid" ColumnName="usrid" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="FImage" ColumnName="FImage" />
+                <ScalarProperty Name="TimeDate" ColumnName="TimeDate" />
+                <ScalarProperty Name="FPrice" ColumnName="FPrice" />
+                <ScalarProperty Name="FTimePrep" ColumnName="FTimePrep" />
+                <ScalarProperty Name="FCat" ColumnName="FCat" />
+                <ScalarProperty Name="Ftype" ColumnName="Ftype" />
+                <ScalarProperty Name="FName" ColumnName="FName" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Variations">
+            <EntityTypeMapping TypeName="WebApiDemoModel.Variation">
+              <MappingFragment StoreEntitySet="Variation">
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="fid" ColumnName="fid" />
+                <ScalarProperty Name="varName" ColumnName="varName" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="table_layout">
+            <EntityTypeMapping TypeName="WebApiDemoModel.table_layout">
+              <MappingFragment StoreEntitySet="table_layout">
+                <ScalarProperty Name="table1" ColumnName="table1" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SetTables">
+            <EntityTypeMapping TypeName="WebApiDemoModel.SetTable">
+              <MappingFragment StoreEntitySet="SetTable">
+                <ScalarProperty Name="capacity" ColumnName="capacity" />
+                <ScalarProperty Name="tblrestid" ColumnName="tblrestid" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="table_image" ColumnName="table_image" />
+                <ScalarProperty Name="table_no" ColumnName="table_no" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
